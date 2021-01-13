@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/faker-ruby/faker.git
+  revision: 664cbafe9d15bddb97843dcbe107204e6e7291cb
+  branch: master
+  specs:
+    faker (2.15.1)
+      i18n (>= 1.6, < 2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -217,6 +225,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.2)
   byebug
   devise
+  faker!
   jbuilder (~> 2.7)
   listen (~> 3.2)
   pg (>= 0.18, < 2.0)
