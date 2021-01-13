@@ -1,0 +1,19 @@
+.navbar{
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin: 12px 32px;
+}
+.navbar-link{
+  color: #1DA1F2;
+  text-decoration: none;
+  border: 1px solid #1DA1F2;
+  box-sizing: border-box;
+  border-radius: 100px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+  padding: 4px 16px; 
+}

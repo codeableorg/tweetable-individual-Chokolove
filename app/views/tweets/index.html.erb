@@ -1,21 +1,12 @@
-<h1>Tweets</h1>
-<% if user_signed_in? %>
-  Logged in as <strong><%= current_user.email %></strong>.
-  <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-  <br>
-  <%= link_to  "New Tweet", new_tweet_path %>
+<div class="">
   <% @tweets.each do |tweet| %>
-  <hr>
-  <h3><%= tweet.user.name %></h3>
-  <h4><%= tweet.user.username %></h4>
-  <p><%= tweet.body %></p>
-  <%= link_to  "Show", tweet %>
-  <%= link_to  "Edit", edit_tweet_path(tweet), method: :get  %>
-  <%= link_to  "Destroy", tweet_path(tweet), method: :delete %>
-  <hr>
-<% end %>
-<% else %>
-  <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-  <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
-<% end %>
+    <div class="card">
+      <h3><%= tweet.user.name %></h3>
+      <h4><%= tweet.user.username %></h4>
+      <p><%= tweet.body %></p>
+      <%= link_to  "Show", tweet %>
+      <%= link_to  "Edit", edit_tweet_path(tweet), method: :get  %>
+      <%= link_to  "Destroy", tweet_path(tweet), method: :delete %>
+    </div>
+  <% end %>
+</div>

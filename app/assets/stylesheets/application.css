@@ -13,3 +13,26 @@
  *= require_tree .
  *= require_self
  */
+ @font-face {
+  font-family: 'Lato';
+  src: url('https://fonts.googleapis.com/css?family=Lato');
+}
+@font-face {
+  font-family: 'Roboto';
+  src: url('https://fonts.googleapis.com/css?family=Roboto');
+}
+body{
+  margin: 0;
+}
+ .center{
+  margin: auto;
+  width: 600px;
+ }
+ .notice{
+  color: blue;
+  margin: 0;
+}
+.alert{
+  color: red;
+  margin: 0;
+ }
