@@ -1,0 +1,13 @@
+<%= form_with model: tweet do |form| %>
+
+  <div>
+    <%= form.label :body %><br>
+    <%= form.text_area :body, size: '50x10' %>
+  </div>
+
+  <div>
+    <%= link_to 'Cancel', :back %>
+    <%= form.submit %>
+  </div>
+
+<% end %>

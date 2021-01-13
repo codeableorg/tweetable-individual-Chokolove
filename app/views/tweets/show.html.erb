@@ -1,0 +1,7 @@
+<h1>Show Tweet</h1>
+<h3><%= @tweet.user.name %></h3>
+<h4><%= @tweet.user.username %></h4>
+<p><%= @tweet.body %></p>
+<%= link_to  "Edit", edit_tweet_path(@tweet), method: :get  %>
+<%= link_to  "Destroy", tweet_path(@tweet), method: :delete %>
+<%= link_to 'Back', :back %>
