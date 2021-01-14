@@ -24,10 +24,12 @@
               <span class="soft">&nbsp<%= tweet.comments_count %></span>
             </div>
           <% end %>
+          <% if current_user == tweet.user %>
           <div>
             <%= link_to  image_tag("trash.png",  alt:"trash"), tweet_path(tweet), method: :delete, data: { confirm: "Are you sure?" }  %>
             <%= link_to  image_tag("edit.png",  alt:"edit"), edit_tweet_path(tweet), method: :get  %>
           </div>
+          <% end %>
         </div>
       </div>
     </article>

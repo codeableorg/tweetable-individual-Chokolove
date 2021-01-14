@@ -23,11 +23,13 @@
 }
 body{
   margin: 0;
+  background-color: #EBEEF0;
 }
  .center{
   margin: auto;
   width: 600px;
   margin-bottom: 32px;
+  background-color: #FFF;
  }
  .notice{
   color: blue;
@@ -46,6 +48,9 @@ body{
  .flex{
    display: flex;
  }
+ .flex--column{
+   flex-flow: column;
+ }
  .flex--wrap{
    flex-wrap: wrap;
  }
@@ -60,4 +65,7 @@ body{
  }
  .margin-top{
    margin-top: 8px;
+ }
+ .margin--bottom {
+   margin-bottom: 12px;
  }

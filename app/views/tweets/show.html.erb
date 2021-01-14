@@ -1,7 +1,54 @@
-<h1>Show Tweet</h1>
-<h3><%= @tweet.user.name %></h3>
-<h4><%= @tweet.user.username %></h4>
-<p><%= @tweet.body %></p>
-<%= link_to  "Edit", edit_tweet_path(@tweet), method: :get  %>
-<%= link_to  "Destroy", tweet_path(@tweet), method: :delete %>
-<%= link_to 'Back', :back %>
+<header class="header border">
+  <h1 class="title">Tuit Detail</h1>
+</header>
+<article class="margin--bottom card border">
+  <div class="card__img">
+    <%= @tweet.user.avatar.attached? ? image_tag(@tweet.user.avatar) : image_tag("avatar.png") %>
+  </div>
+  <div class="card__body">
+    <h1 class="margin--no">
+      <span class="card__body__text bold"><%= @tweet.user.name %></span>
+      <span class="card__body__text soft">@<%= @tweet.user.username %></span>
+      <span class="card__body__text soft"><%= distance_of_time_in_words(@tweet.created_at, Time.now) %></span>
+    </h1>
+    <p class="margin--no card__body__text"><%= @tweet.body %></p>
+    <div class="flex flex--wrap flex--space margin-top">
+      <%= link_to @tweet, class: "decoration--none" do %>
+        <div class="flex flex--wrap flex--vertical--align">
+          <%= image_tag("comments.png",  alt:"comments") %>
+          <span class="soft">&nbsp<%= @tweet.comments_count %></span>
+        </div>
+      <% end %>
+      <% if current_user == @tweet.user %>
+      <div>
+        <%= link_to  image_tag("trash.png",  alt:"trash"), tweet_path(@tweet), method: :delete, data: { confirm: "Are you sure?" }  %>
+        <%= link_to  image_tag("edit.png",  alt:"edit"), edit_tweet_path(@tweet), method: :get  %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</article>
+<% @tweet.comments.each do |comment| %>
+  <article class="card border">
+    <div class="card__img">
+      <%= comment.user.avatar.attached? ? image_tag(comment.user.avatar) : image_tag("avatar.png") %>
+    </div>
+    <div class="card__body">
+      <h1 class="margin--no">
+        <span class="card__body__text bold"><%= comment.user.name %></span>
+        <span class="card__body__text soft">@<%= comment.user.username %></span>
+        <span class="card__body__text soft"><%= distance_of_time_in_words(comment.created_at, Time.now) %></span>
+      </h1>
+      <p class="margin--no card__body__text"><%= comment.body %></p>
+      <div class="flex flex--wrap flex--space margin-top">
+        <div></div>
+        <% if current_user == comment.user %>
+          <div>
+            <%= link_to  image_tag("trash.png",  alt:"trash"), tweet_comment_path(comment), method: :delete, data: { confirm: "Are you sure?" }  %>
+            <%= link_to  image_tag("edit.png",  alt:"edit"), edit_tweet_comment_path(comment), method: :get  %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </article>
+<% end %>
