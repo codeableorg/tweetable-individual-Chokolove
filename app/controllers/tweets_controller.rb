@@ -38,7 +38,7 @@ class TweetsController < ApplicationController
 
   def destroy
     @tweet.destroy
-    redirect_to categories_url, notice: 'Tweet was successfully destroyed.'
+    redirect_to :root, notice: 'Tweet was successfully destroyed.'
   end
 
   private
