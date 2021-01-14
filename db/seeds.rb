@@ -37,11 +37,13 @@ User.all.each do |user|
 end
 p "Done Tweets"
 p "Sedding Comments"
+users = User.all
 Tweet.all.each do |tweet|
   rand(3..5).times do 
     comment = Comment.new
     comment.body = Faker::Games::WarhammerFantasy.quote
     comment.tweet = tweet
+    comment.user = users.sample
     comment.save
   end
 end
