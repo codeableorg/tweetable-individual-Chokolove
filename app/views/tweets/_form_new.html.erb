@@ -1,0 +1,16 @@
+<div class="form border">
+  <div class="form__img">
+    <%= current_user.avatar.attached? ? image_tag(current_user.avatar) : image_tag("avatar.png") %>
+  </div>
+  <%= form_with model: tweet do |form| %>
+
+    <div class="field_tweet">
+      <%= form.text_field :body, placeholder: "Remember to thing before write..."%>
+    </div>
+
+    <div>
+      <%= form.submit "Tweet", class: "button right" %>
+    </div>
+
+  <% end %>
+</div>

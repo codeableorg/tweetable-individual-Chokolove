@@ -1,13 +1,12 @@
 <%= form_with model: tweet do |form| %>
 
-  <div>
-    <%= form.label :body %><br>
-    <%= form.text_area :body, size: '50x10' %>
-  </div>
+    <div class="field">
+      <%= form.text_field :body, placeholder: "Remember to thing before write..."%>
+    </div>
 
-  <div>
-    <%= link_to 'Cancel', :back %>
-    <%= form.submit %>
-  </div>
+    <div>
+    <%= link_to  "Cancel", :back %>
+      <%= form.submit "Tweet", class: "button" %>
+    </div>
 
 <% end %>

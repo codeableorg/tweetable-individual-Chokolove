@@ -27,6 +27,7 @@ body{
  .center{
   margin: auto;
   width: 600px;
+  margin-bottom: 32px;
  }
  .notice{
   color: blue;
@@ -35,4 +36,28 @@ body{
 .alert{
   color: red;
   margin: 0;
+ }
+ .right{
+   float: right;
+ }
+ .margin--no{
+   margin: 0;
+ }
+ .flex{
+   display: flex;
+ }
+ .flex--wrap{
+   flex-wrap: wrap;
+ }
+ .flex--space{
+   justify-content: space-between;
+ }
+ .flex--vertical--align{
+   align-items: center;
+ }
+ .decoration--none{
+   text-decoration: none;
+ }
+ .margin-top{
+   margin-top: 8px;
  }

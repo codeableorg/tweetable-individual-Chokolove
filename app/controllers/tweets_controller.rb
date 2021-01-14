@@ -4,10 +4,13 @@ class TweetsController < ApplicationController
   before_action :own_tweet, only: %i[edit update destroy] 
 
   def index
+    @tweet = Tweet.new
     @tweets = Tweet.all
   end
 
-  def show; end
+  def show
+    @comment = Comment.new
+  end
 
   def new
     @tweet = Tweet.new
@@ -17,7 +20,7 @@ class TweetsController < ApplicationController
     @tweet = Tweet.new(tweet_params)
     @tweet.user = current_user
     if @tweet.save
-      redirect_to @tweet, notice: 'Tweet was successfully created.'
+      redirect_to :root, notice: 'Tweet was successfully created.'
     else
       render :new
     end

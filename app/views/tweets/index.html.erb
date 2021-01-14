@@ -1,12 +1,35 @@
 <div class="">
+  <header class="header border">
+    <h1 class="title">Home</h1>
+  </header>
+  <% if user_signed_in? %>
+    <%= render "form_new", tweet: @tweet%>
+  <% end %>
   <% @tweets.each do |tweet| %>
-    <div class="card">
-      <h3><%= tweet.user.name %></h3>
-      <h4><%= tweet.user.username %></h4>
-      <p><%= tweet.body %></p>
-      <%= link_to  "Show", tweet %>
-      <%= link_to  "Edit", edit_tweet_path(tweet), method: :get  %>
-      <%= link_to  "Destroy", tweet_path(tweet), method: :delete %>
-    </div>
+    <article class="card border">
+      <div class="card__img">
+        <%= tweet.user.avatar.attached? ? image_tag(tweet.user.avatar) : image_tag("avatar.png") %>
+      </div>
+      <div class="card__body">
+        <h1 class="margin--no">
+          <span class="card__body__text bold"><%= tweet.user.name %></span>
+          <span class="card__body__text soft">@<%= tweet.user.username %></span>
+          <span class="card__body__text soft"><%= distance_of_time_in_words(tweet.created_at, Time.now) %></span>
+        </h1>
+        <p class="margin--no card__body__text"><%= tweet.body %></p>
+        <div class="flex flex--wrap flex--space margin-top">
+          <%= link_to tweet, class: "decoration--none" do %>
+            <div class="flex flex--wrap flex--vertical--align">
+              <%= image_tag("comments.png",  alt:"comments") %>
+              <span class="soft">&nbsp<%= tweet.comments_count %></span>
+            </div>
+          <% end %>
+          <div>
+            <%= link_to  image_tag("trash.png",  alt:"trash"), tweet_path(tweet), method: :delete, data: { confirm: "Are you sure?" }  %>
+            <%= link_to  image_tag("edit.png",  alt:"edit"), edit_tweet_path(tweet), method: :get  %>
+          </div>
+        </div>
+      </div>
+    </article>
   <% end %>
 </div>
