@@ -28,6 +28,9 @@
     </div>
   </div>
 </article>
+<% if user_signed_in? %>
+  <%= render "form_new_comment", comment: @comment%>
+<% end %>
 <% @tweet.comments.each do |comment| %>
   <article class="card border">
     <div class="card__img">
@@ -44,8 +47,8 @@
         <div></div>
         <% if current_user == comment.user %>
           <div>
-            <%= link_to  image_tag("trash.png",  alt:"trash"), tweet_comment_path(comment), method: :delete, data: { confirm: "Are you sure?" }  %>
-            <%= link_to  image_tag("edit.png",  alt:"edit"), edit_tweet_comment_path(comment), method: :get  %>
+            <%= link_to  image_tag("trash.png",  alt:"trash"), tweet_comment_path(@tweet, comment), method: :delete, data: { confirm: "Are you sure?" }  %>
+            <%= link_to  image_tag("edit.png",  alt:"edit"), edit_tweet_comment_path(@tweet, comment), method: :get  %>
           </div>
         <% end %>
       </div>
